@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: api-gateway
+  zipkin:
+    base-url: http://localhost:9411
+server:
+  port: 5555
+eureka:
+  client:
+    service-url:
+      defaultZone: http://peer1:1111/eureka/,http://peer2:1112/eureka/
+  instance:
+    prefer-ip-address: true
+zuul:
+  routes:
+    portal:
+      path: /portal/**
+      serviceId: portal

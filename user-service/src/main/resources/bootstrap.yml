@@ -1,0 +1,15 @@
+server:
+  port: 8081
+spring:
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        serviceId: config-server
+      profile: dev
+eureka:
+  client:
+    service-url:
+      defaultZone: http://peer1:1111/eureka/,http://peer2:1112/eureka/
+  instance:
+    prefer-ip-address: true

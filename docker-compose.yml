@@ -1,0 +1,46 @@
+version: '3'
+
+services:
+  peer1:
+    image: eureka-server:latest
+    networks:
+    - eureka-net
+    ports:
+    - "1111:1111"
+    environment:
+    - spring.profiles.active=peer1
+
+  peer2:
+    image: eureka-server:latest
+    networks:
+    - eureka-net
+    ports:
+    - "1112:1112"
+    environment:
+    - spring.profiles.active=peer2
+
+  api-gateway:
+    image: api-gateway:latest
+    networks:
+    - eureka-net
+    ports:
+    - "5555:5555"
+
+  user-service:
+    image: user-service:latest
+    networks:
+    - eureka-net
+    ports:
+    - "8081:8081"
+    command:
+    - "--mysql.address=192.168.1.52"
+
+  portal:
+    image: portal:latest
+    networks:
+    - eureka-net
+    ports:
+    - "8080:8080"
+networks:
+  eureka-net:
+    driver: bridge

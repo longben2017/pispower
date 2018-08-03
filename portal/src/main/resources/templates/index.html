@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<!-- <!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"> -->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>登录</title>
+</head>
+<body>
+<div class="container">
+    <div th:if="${userName} == null">请<a href="portal/login">登录</a></div>
+    <div th:if="${userName} == null">请<a href="portal/registerIndex">注册</a></div>
+    <div th:if="${userName} != null">欢迎,<span th:text="${userName}"></span>登录</div>
+</div>
+</body>
+</html>
